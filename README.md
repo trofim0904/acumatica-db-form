@@ -1,2 +1,8 @@
-# acumatica-db-form
-An Acumatica customization that enables seamless execution of scripts directly within the platform, enhancing flexibility and streamlining workflows for greater efficiency
+# Acumatica DB Form
+
+## Acumatica Version: 2024R2
+
+This Acumatica customization empowers users to execute scripts directly within the platform, enhancing operational flexibility and streamlining workflows for maximum efficiency.
+
+- **Source Files**: All source files for the package and the project are located in the `src` folder.
+- **Build Scripts**: A script to prepare the package can be found in the `.build` folder.
