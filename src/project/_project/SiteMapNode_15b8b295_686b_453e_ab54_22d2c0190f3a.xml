@@ -1,0 +1,44 @@
+﻿<SiteMapNode>
+    <data-set>
+        <relations format-version="3" relations-version="20240201" main-table="SiteMap">
+            <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+            <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+            <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+            <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+            <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+            <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+        </relations>
+        <layout>
+            <table name="SiteMap">
+                <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                    <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                </table>
+                <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+            </table>
+            <table name="MUIWorkspace">
+                <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+            </table>
+            <table name="MUISubcategory" />
+            <table name="MUIArea" />
+        </layout>
+        <data>
+            <sitemap>
+                <row Position="21520" Title="Database Entry" Url="~/Pages/DT/DTDB0000.aspx" ScreenID="DTDB0000" NodeID="15b8b295-686b-453e-ab54-22d2c0190f3a" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+                    <muiscreen IsPortal="0" WorkspaceID="89a53bee-a06e-491c-9757-34499e31de47" Order="0" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa">
+                        <muipinnedscreen IsPortal="0" Username="" IsPinned="1" />
+                    </muiscreen>
+                </row>
+            </sitemap>
+            <muiworkspace>
+                <row IsPortal="0" WorkspaceID="89a53bee-a06e-491c-9757-34499e31de47" Order="885" Title="Database" Icon="grid_delete" AreaID="3635ea7d-0975-48ff-b4ac-a870f7e1e8b5" IsSystem="0">
+                    <muifavoriteworkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+            </muiworkspace>
+            <muiarea>
+                <row IsPortal="0" AreaID="3635ea7d-0975-48ff-b4ac-a870f7e1e8b5" Order="30" Name="Configuration" />
+            </muiarea>
+        </data>
+    </data-set>
+</SiteMapNode>
