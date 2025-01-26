@@ -1,4 +1,5 @@
 using System.Collections;
+using DTDatabaseEntry.Services;
 using PX.Data;
 using Workspace = DTDatabaseEntry.DAC.DTDatabaseWorkspace;
 
@@ -18,13 +19,19 @@ namespace DTDatabaseEntry.Graphs
         public PXFilter<Workspace> Workspace;
         #endregion
 
+        #region InjectDependency
+        [InjectDependency]
+        public IDTDatabase Database { get; set; }
+        #endregion
+
         #region Events
         public virtual void _(Events.RowSelected<Workspace> args)
         {
             if (args.Row is Workspace workspace)
             {
-                PXUIFieldAttribute.SetEnabled<Workspace.input>(args.Cache, workspace,
-                    !string.IsNullOrWhiteSpace(workspace.Type));
+                var isValidType = !string.IsNullOrWhiteSpace(workspace.Type)
+                                  && workspace.Type != Descriptor.Constants.Unknown;
+                PXUIFieldAttribute.SetEnabled<Workspace.input>(args.Cache, workspace, isValidType);
             }
         }
         #endregion
@@ -34,7 +41,7 @@ namespace DTDatabaseEntry.Graphs
         [PXUIField(DisplayName = "Get Database Type")]
         protected virtual IEnumerable getDBType(PXAdapter adapter)
         {
-            Workspace.Current.Type = "Unknown";
+            Workspace.Current.Type = Database.GetDBType();
             return adapter.Get();
         }
 
