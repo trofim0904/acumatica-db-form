@@ -30,7 +30,7 @@ namespace DTDatabaseEntry.Graphs
             if (args.Row is Workspace workspace)
             {
                 var isValidType = !string.IsNullOrWhiteSpace(workspace.Type)
-                                  && workspace.Type != Descriptor.Constants.Unknown;
+                                  && workspace.Type != Descriptor.DTConstants.Unknown;
                 PXUIFieldAttribute.SetEnabled<Workspace.input>(args.Cache, workspace, isValidType);
             }
         }
@@ -49,7 +49,7 @@ namespace DTDatabaseEntry.Graphs
         [PXUIField(DisplayName = "Execute Script")]
         protected virtual IEnumerable executeScript(PXAdapter adapter)
         {
-            Workspace.Current.Output = "Unknown";
+            Workspace.Current.Output = Database.ExecuteString(Workspace.Current.Type, Workspace.Current.Input);
             return adapter.Get();
         } 
         #endregion
