@@ -1501,9 +1501,11 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DAC\DTDatabaseWorkspace.cs" />
-        <Compile Include="Descriptor\Constants.cs" />
+        <Compile Include="Descriptor\DTConstants.cs" />
         <Compile Include="DTDatabaseEntryModule.cs" />
         <Compile Include="Graphs\DTDatabaseEntry.cs" />
+        <Compile Include="Models\DTScriptResult.cs" />
+        <Compile Include="Models\DTScriptRow.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Services\DTDatabase.cs" />
         <Compile Include="Services\IDTDatabase.cs" />
